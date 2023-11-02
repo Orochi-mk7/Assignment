@@ -1,30 +1,57 @@
-NSL-KDD Dataset Analysis for Intrusion Detection
-Introduction
-This README provides a step-by-step guide on how I conducted the analysis of the NSL-KDD dataset, with a focus on intrusion detection. The NSL-KDD dataset is a valuable resource for developing and evaluating intrusion detection systems in network security.
 
-Step 1: Data Loading
-I began the analysis by loading the NSL-KDD dataset. In this step, I read the dataset from the 'KDDTrain+.txt' file using the Pandas library. The dataset contains a mixture of numerical and categorical attributes, which are essential for developing machine learning models.
+## Introduction
 
-Step 2: Missing Value Handling
-Data quality is essential for accurate analysis. In this step, I handled missing values by filling them with the mean value of their respective columns. This ensures that I have complete data to work with.
+This README explains the step-by-step process of analyzing the NSL-KDD dataset using Python. The code provided in this repository performs various data preprocessing, feature selection, and exploratory data analysis (EDA) tasks.
 
-Step 3: Duplicate Record Check
-To maintain data integrity, I checked for duplicate records. Duplicate records, if found, were either retained or removed, depending on their relevance to the analysis.
+## Code Overview
 
-Step 4: Categorical Data Encoding
-To work with categorical data, I encoded them using one-hot encoding. Specifically, I encoded the 'protocol_type' column, which contains categorical values, into binary values for machine learning model compatibility.
+1 Loading the Dataset
 
-Step 5: Standardizing Numeric Features
-To ensure that each feature contributes proportionally during Principal Component Analysis (PCA), I standardized the numeric features. This step prevents biases in the results and facilitates meaningful interpretation.
+I start by loading the NSL-KDD dataset from the 'KDDTrain+.txt' text file using the Pandas library. This dataset contains information about network traffic for intrusion detection.
 
-Step 6: Feature Selection
-Feature selection is crucial to identify the most relevant features for the analysis. I used the chi-squared (χ²) method, ideal for categorical features, to select the most discriminative features. This reduces dimensionality, improving manageability and accuracy.
+2 Handling Missing Values
 
-Step 7: Creating New Features
-Intrusion detection often requires the creation of new features that provide deeper insights. In this step, I created a new feature called 'failed_login_attempts' by combining relevant features, enhancing the dataset's informativeness.
+I handle missing values in the dataset by replacing them with the mean of the respective columns. This ensures that the data is complete and ready for analysis.
 
-Step 8: Visualization and Analysis
-The analysis included data visualization, PCA, and correlation analysis. I created visualizations in the principal component space, explored data clusters, and analyzed the semantic meaning of each principal component to gain deeper insights into data patterns.
+3 Checking for Duplicate Records
 
-Step 9: Conclusion and Applications
-I concluded the analysis by summarizing key takeaways and discussing the practical applications of the analysis in cybersecurity and intrusion detection.
+Duplicate records can affect the quality of analysis. I check for duplicate records in the dataset and either retain or remove them, ensuring data integrity.
+
+ 4 Categorical Data Encoding
+
+Categorical data, such as 'protocol_type,' is encoded into numerical format using one-hot encoding. This step is essential for machine learning algorithms to work with categorical features.
+
+5 Standardizing Numeric Features
+
+I standardize numeric features by scaling them to have a mean of 0 and a standard deviation of 1. This step ensures that all features contribute equally to subsequent analyses.
+
+6 Feature Selection
+
+I use the chi-squared (χ²) method to perform feature selection and select the top 10 most relevant features. This step reduces dimensionality and focuses on the most important aspects of the data.
+
+7 Feature Engineering
+
+I create a new feature called 'failed_login_attempts' by combining relevant features: 'num_failed_logins,' 'root_shell,' and 'su_attempted.' This new feature provides additional information for analysis.
+
+8 Data Visualization
+
+I create two types of data visualizations:
+
+ A histogram of the 'failed_login_attempts' feature to understand its distribution.
+ A scatter plot showing the relationship between 'failed_login_attempts' and 'duration.'
+
+9 Summary Statistics
+
+I display summary statistics for numeric columns, providing insights into the data's central tendencies and distributions.
+
+10 Unique Values and Missing Values
+
+I check for unique values in the 'protocol_type' column and report them. Additionally, I check for missing values and display the count of missing values in each column.
+
+11 Class Distribution
+
+I analyze the class distribution of the 'class' column, which is crucial for understanding the balance between normal and intrusion records.
+
+12 Additional EDA
+
+I create a pair plot to visualize relationships between features, and a correlation heatmap to understand feature correlations.
